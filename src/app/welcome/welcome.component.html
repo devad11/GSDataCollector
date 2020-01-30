@@ -1,7 +1,18 @@
 <h1>Welcome!</h1>
 
 <div class="container">
-Welcome {{name}}. 
+    Welcome {{name}}.
 
-Welcome to the GS Data Collector! <a routerLink="/todos">here</a>
+    Welcome to the GS Data Collector! <a routerLink="/todos">here</a><br>
+
+    Click here to get customized welcome message
+
+    <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Get Welcome Mesage</button><br>
+
+</div>
+
+<div class="container" *ngIf="welcomeMessageFromService">
+    <h2>Your customized Welcome Message</h2>
+    {{welcomeMessageFromService}}
+
 </div>
