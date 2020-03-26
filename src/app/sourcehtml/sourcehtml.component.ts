@@ -19,8 +19,7 @@ export class SourcehtmlComponent implements OnInit {
 
   ngOnInit() {
     this.sourceHtmlService.getSourceHtml().subscribe(
-      data => console.log(data)
-      // this.sourcehtml = data
+      data => this.sourcehtml = data
     );
   }
 

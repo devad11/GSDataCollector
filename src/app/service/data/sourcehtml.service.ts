@@ -12,7 +12,7 @@ export class SourcehtmlService {
     ) { }
 
     getSourceHtml() {
-      return this.http.get<string>(`http://localhost:8080/webscrape`);
+      return this.http.get(`http://localhost:8080/webscrape`, {responseType: 'text'});
   }
 }
 
