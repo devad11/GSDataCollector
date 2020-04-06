@@ -11,6 +11,10 @@ export class SourcehtmlComponent implements OnInit {
 
   sourcehtml: string
 
+  selectors: Array<String>
+
+  data = [];
+
   constructor(
     private sourceHtmlService: SourcehtmlService,
     private route: ActivatedRoute,
@@ -21,6 +25,22 @@ export class SourcehtmlComponent implements OnInit {
     this.sourceHtmlService.getSourceHtml().subscribe(
       data => this.sourcehtml = data
     );
+
   }
+
+  trackByFn(index, item) {
+    return index; 
+  }
+
+
+ store(newValue){
+   this.data.push(newValue);
+   console.log(this.data)
+
+   this.sourceHtmlService.sendSource(this.data).subscribe(
+    data => {
+      console.log(data)
+    })
+ }
 
 }

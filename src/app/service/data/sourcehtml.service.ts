@@ -14,5 +14,9 @@ export class SourcehtmlService {
     getSourceHtml() {
       return this.http.get(`http://localhost:8080/webscrape`, {responseType: 'text'});
   }
+  
+  sendSource(selector) {
+    return this.http.post(`http://localhost:8080/webscrape/selector`, selector)
+  }
 }
 
