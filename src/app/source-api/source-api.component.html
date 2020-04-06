@@ -1,0 +1,9 @@
+
+    <button (click)="getData()" class="btn btn-success">Get Data from API</button><br>
+
+
+    <div class="container" *ngIf="apiData">
+      <h2>The data: </h2>
+      <pre>{{apiData | json }}</pre>
+  
+  </div>
