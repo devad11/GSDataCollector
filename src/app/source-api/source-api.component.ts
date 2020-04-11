@@ -10,6 +10,7 @@ import { ApiDataService } from '../service/data/api-data.service';
 export class SourceApiComponent implements OnInit {
 
   apiData: string;
+  msg: string;
 
   constructor(private route: ActivatedRoute,
   private service: ApiDataService) { }
@@ -29,6 +30,11 @@ export class SourceApiComponent implements OnInit {
   }
   handleSuccessfulResponse(response: any) {
     this.apiData = response;
+    this.service.apiDataToBackend(this.apiData)
+    .subscribe(
+      response => this.msg = response,
+    );
+    console.log(this.msg)
   }
 
 }
