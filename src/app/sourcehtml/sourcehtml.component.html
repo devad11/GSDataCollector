@@ -1,9 +1,10 @@
 
-<br>
-
-    <label><b>Website</b></label>
+<label><b>Website</b></label>
+<input type="text" name="website">
+<button (click)="loadWebsite()" type="button">Load</button>
 
 <iframe id="serviceFrameSend" src="https://irish.national-lottery.com/irish-lotto/past-results" width="100%" height="500"  frameborder="0"></iframe>
+<!-- <iframe id="serviceFrameSend" src="{{website}}" width="100%" height="500"  frameborder="0"></iframe> -->
 
 <div class="col-md-4">
   <div class="md-form">
@@ -14,11 +15,31 @@
 </div>
 
 <ul>
-<li *ngFor="let d of data; let i=index; trackBy: trackByFn">
-  {{d}}
-</li>
-<ul>
+  <li *ngFor="let d of data; let i=index; trackBy: trackByFn">
+    {{d}}
+  </li>
+</ul>
 
+<!-- <p>{{scrapeInfo.active}}</p> -->
+  <!-- <div class="container">
 
-  
+    <form (ngSubmit)="sendScrapeInfo()" #scrapeInfoForm="ngForm">
+      <div class="form-group">
+        <label>title</label>
+        <input type="text" [(ngModel)]="scrapeInfo.title" class="form-control" name="title">
+      </div>
+
+      <div class="form-group">
+        <label>source</label>
+        <input type="text" [(ngModel)]="scrapeInfo.source" class="form-control" name="source">
+      </div>
+
+      <div class="form-group">
+        <label>selector</label>
+        <input type="text" [(ngModel)]="scrapeInfo.selector" class="form-control" name="selector">
+      </div>
+
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div> -->
 

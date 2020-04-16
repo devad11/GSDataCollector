@@ -16,6 +16,8 @@ import { TodoComponent } from './todo/todo.component';
 import { HttpIntercepterBasicAuthService } from './service/http/http-intercepter-basic-auth.service';
 import { SourcehtmlComponent } from './sourcehtml/sourcehtml.component';
 import { SourceApiComponent } from './source-api/source-api.component';
+import { KeysPipe } from './pipes/keys.pipe';
+import { ShowTableComponent } from './show-table/show-table.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SourceApiComponent } from './source-api/source-api.component';
     LogoutComponent,
     TodoComponent,
     SourcehtmlComponent,
-    SourceApiComponent
+    SourceApiComponent,
+    KeysPipe,
+    ShowTableComponent
   ],
   imports: [
     BrowserModule,

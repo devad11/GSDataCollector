@@ -9,6 +9,7 @@ import { ApiDataService } from '../service/data/api-data.service';
 })
 export class SourceApiComponent implements OnInit {
 
+  apiAddress = "https://financialmodelingprep.com/api/v3/quote/AAPL,FB";
   apiData: string;
   msg: string;
 
@@ -28,13 +29,22 @@ export class SourceApiComponent implements OnInit {
   handleErrorResponse(error: any) {
     this.apiData = error.message;
   }
+
   handleSuccessfulResponse(response: any) {
     this.apiData = response;
-    this.service.apiDataToBackend(this.apiData)
+    this.service.apiDataToBackend(this.apiAddress)
     .subscribe(
       response => this.msg = response,
     );
     console.log(this.msg)
-  }
+  }  
+  // handleSuccessfulResponse(response: any) {
+  //   this.apiData = response;
+  //   this.service.apiDataToBackend(this.apiData)
+  //   .subscribe(
+  //     response => this.msg = response,
+  //   );
+  //   console.log(this.msg)
+  // }
 
 }
