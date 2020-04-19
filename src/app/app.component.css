@@ -1,1 +1,11 @@
-div { background-color: beige;}
+/* div { background-color: beige;} */
+
+  .container {
+    background: beige; 
+    min-height: 1000px;
+    padding-bottom: 50px; 
+  }
+
+
+
+  

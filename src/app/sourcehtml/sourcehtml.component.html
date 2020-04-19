@@ -6,36 +6,30 @@
 
 <br>
 
-<!-- <input type="text" name="newSite">
-<input #box (keyup.enter)="onEnter(box.value)">
-<button (click)="loadWebsite()" type="button">Load</button> -->
-
-<!-- <iframe id="serviceFrameSend" src="https://irish.national-lottery.com/irish-lotto/past-results" width="100%" height="500"  frameborder="0"></iframe> -->
 <iframe id="serviceFrameSend" [src]="website | safe" width="100%" height="500"  frameborder="0"></iframe>
-<!-- [src] or [attr.src] -->
 
-<p>{{scrapeInfo?.is_active}}</p>
+<p>{{scraperInfo?.is_active}}</p>
   <div class="container">
 
-    <form (ngSubmit)="sendScrapeInfo()"  #scrapeInfoForm="ngForm">
+    <form (ngSubmit)="sendScraperInfo()"  #scraperInfoForm="ngForm">
       <div class="form-group">
         <label>Collection name</label>
-        <input type="text" (ngModel)="scrapeInfo?.name" (ngModelChange)="scrapeInfo.name = $event" class="form-control" name="name">
+        <input [ngModel]="scraperInfo?.name" (ngModelChange)="scraperInfo.name = $event" class="form-control" name="name">
       </div>
 
       <div class="form-group">
         <label>Source</label>
-        <input type="text" (ngModel)="scrapeInfo?.source" (ngModelChange)="scrapeInfo.source = $event" class="form-control" name="source">
+        <input type="text" [ngModel]="scraperInfo?.source" (ngModelChange)="scraperInfo.source = $event" class="form-control" name="source">
       </div>
 
       <div class="form-group">
         <label>Selectors</label>
-        <input type="text" (ngModel)="scrapeInfo?.selectors" (ngModelChange)="scrapeInfo.selectors = $event" class="form-control" name="selectors">
+        <input type="text"[ngModel]="scraperInfo?.selectors" (ngModelChange)="scraperInfo.selectors = $event" class="form-control" name="selectors">
       </div>
 
       <div class="form-group">
         <label>Column names</label>
-        <input type="text" (ngModel)="scrapeInfo?.column_names" (ngModelChange)="scrapeInfo.column_names = $event" class="form-control" name="column_names">
+        <input type="text" [ngModel]="scraperInfo?.column_names" (ngModelChange)="scraperInfo.column_names = $event" class="form-control" name="column_names">
       </div>
 
       <button type="submit" class="btn btn-success">Save</button>

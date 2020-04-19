@@ -13,7 +13,7 @@ export class ScraperInfo {
     public source: string,
     public selectors: string, 
     public column_names: string, 
-    public created: Date,
+    public created: number,
     public is_active: boolean, 
     public proceed: boolean 
   )
@@ -27,7 +27,7 @@ export class ScraperInfo {
 })
 export class SourcehtmlComponent implements OnInit{
 
-  scraperInfo = new ScraperInfo('name', 2, 1, 'Adam', 'source', 'selectors', 'columns', null, true, false);
+  scraperInfo: ScraperInfo;
   website: string;
   
   sourcehtml: string;
@@ -39,23 +39,22 @@ export class SourcehtmlComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router,
     public sanitizer: DomSanitizer
-    
   ) { 
   }
 
   ngOnInit() {
-    this.scraperInfo = new ScraperInfo('name', 2, 1, 'Adam', 'source', 'selectors', 'columns', null, true, false);
+    this.scraperInfo = new ScraperInfo('name2', 2, 1, 'Adam', 'source', 'selectors', 'columns', null, true, false);
     this.website = "http://www.mycit.ie/";
   }
 
 
- sendScrapeInfo() {
+ sendScraperInfo() {
+  this.scraperInfo.created = Date.now()
   console.log(this.scraperInfo)
-  // this.scraperInfo.created = Date.now()
-  // this.sourceHtmlService.sendScrapeInfo(this.scraperInfo).subscribe(
-  //   data => {
-  //     console.log(data)
-    // });
+  this.sourceHtmlService.sendScrapeInfo(this.scraperInfo).subscribe(
+    data => {
+      console.log(data)
+    });
   }
   
   loadWebsite(){
