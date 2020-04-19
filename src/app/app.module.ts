@@ -18,6 +18,7 @@ import { SourcehtmlComponent } from './sourcehtml/sourcehtml.component';
 import { SourceApiComponent } from './source-api/source-api.component';
 import { KeysPipe } from './pipes/keys.pipe';
 import { ShowTableComponent } from './show-table/show-table.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ShowTableComponent } from './show-table/show-table.component';
     SourcehtmlComponent,
     SourceApiComponent,
     KeysPipe,
-    ShowTableComponent
+    ShowTableComponent,
+    SafePipe 
   ],
   imports: [
     BrowserModule,

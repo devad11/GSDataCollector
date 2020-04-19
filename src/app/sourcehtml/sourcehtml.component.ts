@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { SourcehtmlService } from '../service/data/sourcehtml.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {DomSanitizer} from '@angular/platform-browser';
+
 
 export class ScraperInfo {
   constructor(
-    public title: String,
-    public active: boolean,
-    public created: number,
-    public source: String,
-    public selector: string //Array<String>
+    public name: string,
+    public collection_type: number,
+    public frequency: number, 
+    public made_by: string, 
+    public source: string,
+    public selectors: string, 
+    public column_names: string, 
+    public created: Date,
+    public is_active: boolean, 
+    public proceed: boolean 
   )
   {}
 }
@@ -20,24 +27,25 @@ export class ScraperInfo {
 })
 export class SourcehtmlComponent implements OnInit{
 
-  scraperInfo = new ScraperInfo('title', true, 0, 'source', 'selector');
+  scraperInfo = new ScraperInfo('name', 2, 1, 'Adam', 'source', 'selectors', 'columns', null, true, false);
   website: string;
   
   sourcehtml: string;
   selectors: Array<String>;
   data = [];
-  
-  
+
   constructor(
     private sourceHtmlService: SourcehtmlService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public sanitizer: DomSanitizer
+    
   ) { 
-
   }
 
   ngOnInit() {
-    this.scraperInfo = new ScraperInfo('title', true, 0, 'source', 'selector');
+    this.scraperInfo = new ScraperInfo('name', 2, 1, 'Adam', 'source', 'selectors', 'columns', null, true, false);
+    this.website = "http://www.mycit.ie/";
   }
 
 
@@ -51,7 +59,7 @@ export class SourcehtmlComponent implements OnInit{
   }
   
   loadWebsite(){
-
+    
   }
 
     trackByFn(index, item) {
@@ -59,12 +67,12 @@ export class SourcehtmlComponent implements OnInit{
   }
 
  store(newValue){
-   this.data.push(newValue);
+   this.website = newValue;
    console.log(this.data)
 
-   this.sourceHtmlService.sendSource(this.data).subscribe(
-    data => {
-      console.log(data)
-    })
+  //  this.sourceHtmlService.sendSource(this.data).subscribe(
+  //   data => {
+  //     console.log(data)
+  //   })
  }
 }

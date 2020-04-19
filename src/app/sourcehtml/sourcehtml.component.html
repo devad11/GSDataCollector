@@ -1,45 +1,50 @@
 
-<label><b>Website</b></label>
-<input type="text" name="website">
-<button (click)="loadWebsite()" type="button">Load</button>
-
-<iframe id="serviceFrameSend" src="https://irish.national-lottery.com/irish-lotto/past-results" width="100%" height="500"  frameborder="0"></iframe>
-<!-- <iframe id="serviceFrameSend" src="{{website}}" width="100%" height="500"  frameborder="0"></iframe> -->
-
-<div class="col-md-4">
-  <div class="md-form">
-  <i class="fa fa-mobile prefix" style="font-size: 46px; margin-top: -10px;"></i>
+<div class="container">
+  <label>Website</label>
   <input type="text" id="rec4" #input class="form-control" (change)="store(input.value); input.value=''"> 
-  <label for="rec4" class="">Contact Number</label>
-  </div>
 </div>
 
-<ul>
-  <li *ngFor="let d of data; let i=index; trackBy: trackByFn">
-    {{d}}
-  </li>
-</ul>
+<br>
 
-<!-- <p>{{scrapeInfo.active}}</p> -->
-  <!-- <div class="container">
+<!-- <input type="text" name="newSite">
+<input #box (keyup.enter)="onEnter(box.value)">
+<button (click)="loadWebsite()" type="button">Load</button> -->
 
-    <form (ngSubmit)="sendScrapeInfo()" #scrapeInfoForm="ngForm">
+<!-- <iframe id="serviceFrameSend" src="https://irish.national-lottery.com/irish-lotto/past-results" width="100%" height="500"  frameborder="0"></iframe> -->
+<iframe id="serviceFrameSend" [src]="website | safe" width="100%" height="500"  frameborder="0"></iframe>
+<!-- [src] or [attr.src] -->
+
+<p>{{scrapeInfo?.is_active}}</p>
+  <div class="container">
+
+    <form (ngSubmit)="sendScrapeInfo()"  #scrapeInfoForm="ngForm">
       <div class="form-group">
-        <label>title</label>
-        <input type="text" [(ngModel)]="scrapeInfo.title" class="form-control" name="title">
+        <label>Collection name</label>
+        <input type="text" (ngModel)="scrapeInfo?.name" (ngModelChange)="scrapeInfo.name = $event" class="form-control" name="name">
       </div>
 
       <div class="form-group">
-        <label>source</label>
-        <input type="text" [(ngModel)]="scrapeInfo.source" class="form-control" name="source">
+        <label>Source</label>
+        <input type="text" (ngModel)="scrapeInfo?.source" (ngModelChange)="scrapeInfo.source = $event" class="form-control" name="source">
       </div>
 
       <div class="form-group">
-        <label>selector</label>
-        <input type="text" [(ngModel)]="scrapeInfo.selector" class="form-control" name="selector">
+        <label>Selectors</label>
+        <input type="text" (ngModel)="scrapeInfo?.selectors" (ngModelChange)="scrapeInfo.selectors = $event" class="form-control" name="selectors">
+      </div>
+
+      <div class="form-group">
+        <label>Column names</label>
+        <input type="text" (ngModel)="scrapeInfo?.column_names" (ngModelChange)="scrapeInfo.column_names = $event" class="form-control" name="column_names">
       </div>
 
       <button type="submit" class="btn btn-success">Save</button>
     </form>
-</div> -->
+</div>
+
+<!-- <ul>
+  <li *ngFor="let d of data; let i=index; trackBy: trackByFn">
+    {{d}}
+  </li>
+</ul> -->
 

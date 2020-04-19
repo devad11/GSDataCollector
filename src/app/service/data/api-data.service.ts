@@ -15,7 +15,10 @@ export class ApiDataService {
       return this.http.get<ApiDataService>("https://financialmodelingprep.com/api/v3/quote/AAPL,FB");
   }
 
-  apiDataToBackend(apiData) {
+  // apiDataToBackend(apiData) {
+  //   return this.http.post<string>(`${API_URL}/apidata`, apiData)
+
+    apiDataToBackend(apiData) {
     return this.http.post<string>(`${API_URL}/apidata`, apiData)
   }
 }
