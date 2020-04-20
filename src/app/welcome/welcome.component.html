@@ -1,18 +1,22 @@
-<h1>Welcome!</h1>
+<br><br><br><br><br><br><br><br><br><br>
 
-<div class="container">
-    Welcome {{name}}.
+<div class="center">
+    <h1>Welcome!</h1>
 
-    Welcome to the GS Data Collector! <a routerLink="/todos">here</a><br>
+    <div class="container">
+        Welcome {{name}}.
 
-    Click here to get customized welcome message
+        Welcome to the GS Data Collector! <a routerLink="/todos">here</a><br>
 
-    <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Get Welcome Mesage</button><br>
+        Click here to show all data collection from this user ->
 
-</div>
+        <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Show collections</button><br>
 
-<div class="container" *ngIf="welcomeMessageFromService">
-    <h2>Your customized Welcome Message</h2>
-    {{welcomeMessageFromService}}
+    </div>
 
+    <div class="container" *ngIf="welcomeMessageFromService">
+        <h2>Your collections are the following:</h2>
+        {{welcomeMessageFromService}}
+
+    </div>
 </div>

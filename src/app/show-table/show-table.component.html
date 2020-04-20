@@ -1,6 +1,11 @@
-<p>
-  Show database table
-</p>
+<div class="container">
+  <p>
+    Show database table
+  </p>
+  <label>Website</label>
+  <input type="text" id="rec4" #input class="form-control" (change)="store(input.value); input.value=''"> 
+</div>
+
 <hr>
 <div class="container" style="overflow-x:auto;">
   <table class="table">

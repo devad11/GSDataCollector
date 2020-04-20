@@ -11,8 +11,8 @@ export class ApiDataService {
     private http:HttpClient
   ) { }
 
-  retrieveDataFromApi() {
-      return this.http.get<ApiDataService>("https://financialmodelingprep.com/api/v3/quote/AAPL,FB");
+  retrieveDataFromApi(apiAddress) {
+      return this.http.get<ApiDataService>(apiAddress);
   }
 
   // apiDataToBackend(apiData) {

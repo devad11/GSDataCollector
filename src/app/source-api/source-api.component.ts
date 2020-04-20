@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiDataService } from '../service/data/api-data.service';
+import { ScraperInfo } from '../sourcehtml/sourcehtml.component';
+import { SourcehtmlService } from '../service/data/sourcehtml.service';
 
 @Component({
   selector: 'app-source-api',
@@ -9,18 +11,23 @@ import { ApiDataService } from '../service/data/api-data.service';
 })
 export class SourceApiComponent implements OnInit {
 
-  apiAddress = "https://financialmodelingprep.com/api/v3/quote/AAPL,FB";
+  apiAddress = "";
   apiData: string;
   msg: string;
 
+  scraperInfo: ScraperInfo;
+
   constructor(private route: ActivatedRoute,
-  private service: ApiDataService) { }
+  private service: ApiDataService,
+  private sourceHtmlService: SourcehtmlService
+  ) { }
 
   ngOnInit() {
+    this.scraperInfo = new ScraperInfo('name2', 1, 1, 'Adam', 'source', null, null, null, true, false);
   }
 
   getData() {
-    this.service.retrieveDataFromApi().subscribe(
+    this.service.retrieveDataFromApi(this.apiAddress).subscribe(
       response => this.handleSuccessfulResponse(response),
       error => this.handleErrorResponse(error)
     );
@@ -38,6 +45,20 @@ export class SourceApiComponent implements OnInit {
     );
     console.log(this.msg)
   }  
+
+  sendScraperInfo() {
+    this.scraperInfo.created = Date.now()
+    console.log(this.scraperInfo)
+    this.sourceHtmlService.sendScraperInfo(this.scraperInfo).subscribe(
+      data => {
+        console.log(data)
+      });
+    } 
+
+    store(newValue){
+      this.apiAddress = newValue;
+    }
+
   // handleSuccessfulResponse(response: any) {
   //   this.apiData = response;
   //   this.service.apiDataToBackend(this.apiData)

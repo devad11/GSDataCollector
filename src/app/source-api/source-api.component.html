@@ -1,9 +1,34 @@
 
-    <button (click)="getData()" class="btn btn-success">Get Data from API</button><br>
+  <br>
+  
+  <div class="container">
 
+    <form (ngSubmit)="sendScraperInfo()"  #scraperInfoForm="ngForm">
+      <div class="form-group">
+        <label>Collection name</label>
+        <input [ngModel]="scraperInfo?.name" (ngModelChange)="scraperInfo.name = $event" class="form-control" name="name">
+      </div>
+
+      <div class="form-group">
+        <label>Source</label>
+        <input type="text" [ngModel]="scraperInfo?.source" (ngModelChange)="scraperInfo.source = $event" class="form-control" name="source">
+      </div>
+
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+
+    
+      <label>API Test</label>
+      <input type="text" id="rec4" #input class="form-control" (change)="store(input.value); input.value=''"> 
+    </div>
+
+    <br>
+
+    <button (click)="getData()" class="btn btn-success">Get Data from API</button><br>
 
     <div class="container" *ngIf="apiData">
       <h2>The data: </h2>
       <pre>{{apiData | json }}</pre>
   
-  </div>
+
+</div>

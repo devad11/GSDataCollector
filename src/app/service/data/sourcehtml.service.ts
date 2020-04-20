@@ -19,7 +19,7 @@ export class SourcehtmlService {
     return this.http.post(`${API_URL}/webscrape/selector`, selector)
   }
 
-  sendScrapeInfo(scrapeInfo){
+  sendScraperInfo(scrapeInfo){
     return this.http.post(`${API_URL}/webscrape/selector`, scrapeInfo)
   }
 

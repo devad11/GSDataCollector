@@ -51,7 +51,7 @@ export class SourcehtmlComponent implements OnInit{
  sendScraperInfo() {
   this.scraperInfo.created = Date.now()
   console.log(this.scraperInfo)
-  this.sourceHtmlService.sendScrapeInfo(this.scraperInfo).subscribe(
+  this.sourceHtmlService.sendScraperInfo(this.scraperInfo).subscribe(
     data => {
       console.log(data)
     });
@@ -67,7 +67,7 @@ export class SourcehtmlComponent implements OnInit{
 
  store(newValue){
    this.website = newValue;
-   console.log(this.data)
+
 
   //  this.sourceHtmlService.sendSource(this.data).subscribe(
   //   data => {
