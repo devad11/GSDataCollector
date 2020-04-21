@@ -10,8 +10,8 @@ import { BasicAuthenticationService } from '../service/basic-authentication-serv
 })
 export class LoginComponent implements OnInit {
 
-  username = 'adam'
-  password = 'password'
+  username = ''
+  password = ''
   errorMessage = 'Invalid Credentials'
   invalidLogin = false
 

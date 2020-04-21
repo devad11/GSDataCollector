@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../service/data/todo-data.service';
 import { Router } from '@angular/router';
+import { ScraperInfo } from '../sourcehtml/sourcehtml.component';
+import { SourcehtmlService } from '../service/data/sourcehtml.service';
 
 export class Todo {
   constructor(
@@ -21,16 +23,19 @@ export class Todo {
 export class ListTodosComponent implements OnInit {
 
   todos: Todo[]
+  scraperInfos: ScraperInfo[]
 
   message: string
+  username: string;
 
   constructor(
     private todoService: TodoDataService,
-    private router: Router
+    private router: Router,
+    private sourceService: SourcehtmlService
   ) { }
 
   ngOnInit() {
-    this.refreshTodos();
+    this.refreshTodo();
   }
 
   refreshTodos() {
@@ -41,6 +46,14 @@ export class ListTodosComponent implements OnInit {
       }
     );
   }
+  refreshTodo() {
+  this.sourceService.retrieveAllScraperInfo("adam").subscribe(
+    response => {
+      console.log(response);
+      this.scraperInfos = response;
+    }
+  );
+}
 
   deleteTodo(id) {
     this.todoService.deleteTodo("adam", id).subscribe(

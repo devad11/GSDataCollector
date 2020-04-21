@@ -27,6 +27,11 @@
       </div>
 
       <div class="form-group">
+        <label>Selectors</label>
+        <input type="number"[ngModel]="scraperInfo?.frequency" (ngModelChange)="scraperInfo.frequency = $event" class="form-control" name="frequency">
+      </div>
+
+      <div class="form-group">
         <label>Column names</label>
         <input type="text" [ngModel]="scraperInfo?.column_names" (ngModelChange)="scraperInfo.column_names = $event" class="form-control" name="column_names">
       </div>

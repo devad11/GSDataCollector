@@ -47,6 +47,12 @@ export class SourcehtmlComponent implements OnInit{
     this.website = "http://www.mycit.ie/";
   }
 
+  getScrape(){
+    this.sourceHtmlService.getScrape(this.scraperInfo).subscribe(
+      data => {
+        console.log(data)
+      });
+  }
 
  sendScraperInfo() {
   this.scraperInfo.created = Date.now()
@@ -54,7 +60,12 @@ export class SourcehtmlComponent implements OnInit{
   this.sourceHtmlService.sendScraperInfo(this.scraperInfo).subscribe(
     data => {
       console.log(data)
+      this.done()
     });
+  }
+
+  done() {
+    this.router.navigate(['todos'])
   }
   
   loadWebsite(){

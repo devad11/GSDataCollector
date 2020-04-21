@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiDataService } from '../service/data/api-data.service';
 import { ScraperInfo } from '../sourcehtml/sourcehtml.component';
 import { SourcehtmlService } from '../service/data/sourcehtml.service';
@@ -18,7 +18,8 @@ export class SourceApiComponent implements OnInit {
   scraperInfo: ScraperInfo;
 
   constructor(private route: ActivatedRoute,
-  private service: ApiDataService,
+  private service: ApiDataService, 
+  private router: Router,
   private sourceHtmlService: SourcehtmlService
   ) { }
 
@@ -52,8 +53,14 @@ export class SourceApiComponent implements OnInit {
     this.sourceHtmlService.sendScraperInfo(this.scraperInfo).subscribe(
       data => {
         console.log(data)
+        this.done()
       });
+      
     } 
+
+    done() {
+      this.router.navigate(['todos'])
+    }
 
     store(newValue){
       this.apiAddress = newValue;

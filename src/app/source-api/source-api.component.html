@@ -14,6 +14,11 @@
         <input type="text" [ngModel]="scraperInfo?.source" (ngModelChange)="scraperInfo.source = $event" class="form-control" name="source">
       </div>
 
+      <div class="form-group">
+        <label>Selectors</label>
+        <input type="number"[ngModel]="scraperInfo?.frequency" (ngModelChange)="scraperInfo.frequency = $event" class="form-control" name="frequency">
+      </div>
+
       <button type="submit" class="btn btn-success">Save</button>
     </form>
 
