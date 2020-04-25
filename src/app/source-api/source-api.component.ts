@@ -15,6 +15,7 @@ export class SourceApiComponent implements OnInit {
   apiData: string;
   msg: string;
 
+
   scraperInfo: ScraperInfo;
 
   constructor(private route: ActivatedRoute,
@@ -40,6 +41,7 @@ export class SourceApiComponent implements OnInit {
 
   handleSuccessfulResponse(response: any) {
     this.apiData = response;
+    console.log(response)
     this.service.apiDataToBackend(this.apiAddress)
     .subscribe(
       response => this.msg = response,

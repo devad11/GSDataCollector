@@ -3,6 +3,7 @@ import { TodoDataService } from '../service/data/todo-data.service';
 import { Router } from '@angular/router';
 import { ScraperInfo } from '../sourcehtml/sourcehtml.component';
 import { SourcehtmlService } from '../service/data/sourcehtml.service';
+import { BasicAuthenticationService } from '../service/basic-authentication-service';
 
 export class Todo {
   constructor(
@@ -31,15 +32,17 @@ export class ListTodosComponent implements OnInit {
   constructor(
     private todoService: TodoDataService,
     private router: Router,
-    private sourceService: SourcehtmlService
+    private sourceService: SourcehtmlService,
+    private basicAuthenticationService: BasicAuthenticationService
   ) { }
 
   ngOnInit() {
+    this.username = this.basicAuthenticationService.getAuthenticatedUser();
     this.refreshTodo();
   }
 
   refreshTodos() {
-    this.todoService.retrieveAllTodos("adam").subscribe(
+    this.todoService.retrieveAllTodos(this.username).subscribe(
       response => {
         console.log(response);
         this.todos = response;
@@ -47,7 +50,7 @@ export class ListTodosComponent implements OnInit {
     );
   }
   refreshTodo() {
-  this.sourceService.retrieveAllScraperInfo("adam").subscribe(
+  this.sourceService.retrieveAllScraperInfo(this.username).subscribe(
     response => {
       console.log(response);
       this.scraperInfos = response;
@@ -56,7 +59,7 @@ export class ListTodosComponent implements OnInit {
 }
 
   deleteTodo(id) {
-    this.todoService.deleteTodo("adam", id).subscribe(
+    this.todoService.deleteTodo(this.username, id).subscribe(
       response => {
         console.log(response);
         this.message = `Delete of Todo ${id} Successful`
