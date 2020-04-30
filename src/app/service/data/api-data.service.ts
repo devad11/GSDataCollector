@@ -33,6 +33,6 @@ export class ApiDataService {
   }
 
   sendFile(file) {
-    return this.http.post<String>(`${API_URL}/sendfile`, file)
+    return this.http.post(`${API_URL}/sendfile`, file)
   }
 }

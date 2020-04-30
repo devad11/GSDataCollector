@@ -34,6 +34,8 @@ export class SourcehtmlComponent implements OnInit{
   selectors: Array<String>;
   data = [];
 
+  testData: string;
+
   constructor(
     private sourceHtmlService: SourcehtmlService,
     private route: ActivatedRoute,
@@ -49,9 +51,19 @@ export class SourcehtmlComponent implements OnInit{
 
   getScrape(){
     this.sourceHtmlService.getScrape(this.scraperInfo).subscribe(
-      data => {
-        console.log(data)
-      });
+      response => this.handleSuccessfulResponse(response),
+      error => this.handleErrorResponse(error)
+    );
+
+  }
+
+  handleSuccessfulResponse(response) {
+    console.log(response) ;
+  }
+
+  handleErrorResponse(error) {
+    console.log(error.error.text)
+    this.testData = error.error.text
   }
 
  sendScraperInfo() {
@@ -63,6 +75,7 @@ export class SourcehtmlComponent implements OnInit{
       this.done()
     });
   }
+
 
   done() {
     this.router.navigate(['todos'])

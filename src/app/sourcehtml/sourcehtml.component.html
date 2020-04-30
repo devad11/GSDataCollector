@@ -10,7 +10,7 @@
 
   <div class="container">
 
-    <form (ngSubmit)="sendScraperInfo()"  #scraperInfoForm="ngForm">
+    <form (ngSubmit)="getScrape()"  #scraperInfoForm="ngForm">
       <div class="form-group">
         <label>Collection name</label>
         <input [ngModel]="scraperInfo?.name" (ngModelChange)="scraperInfo.name = $event" class="form-control" name="name">
@@ -36,8 +36,18 @@
         <input type="text" [ngModel]="scraperInfo?.column_names" (ngModelChange)="scraperInfo.column_names = $event" class="form-control" name="column_names">
       </div>
 
-      <button type="submit" class="btn btn-success">Save</button>
+      <button type="submit" class="btn btn-success">Test</button>
     </form>
+
+    <div class="container" *ngIf="testData">
+      <h2>Test run result: </h2>
+      {{testData}}
+      <br>
+      <button (click)=sendScraperInfo() class="btn btn-success">Save</button>
+
+
+  </div>
+
 </div>
 
 <!-- <ul>

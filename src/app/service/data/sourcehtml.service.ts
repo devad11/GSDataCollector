@@ -18,7 +18,7 @@ export class SourcehtmlService {
     ) { }
 
   getScrape(scrapeInfo) {
-      return this.http.get(`${API_URL}/getwebscrape`, scrapeInfo);
+      return this.http.post(`${API_URL}/getwebscrape`, scrapeInfo);
   }
 
   getSourceHtml() {
