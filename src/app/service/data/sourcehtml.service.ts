@@ -7,18 +7,29 @@ import { ScraperInfo } from 'src/app/sourcehtml/sourcehtml.component';
   providedIn: 'root'
 })
 export class SourcehtmlService {
-  
-
-  retrieveAllScraperInfo(username) {
-    return this.http.get<ScraperInfo[]>(`${API_URL}/users/${username}/datacollector`);
-  }
 
   constructor(
     private http:HttpClient
     ) { }
 
+  retrieveAllScraperInfo(username) {
+    return this.http.get<ScraperInfo[]>(`${API_URL}/users/${username}/datacollector`);
+  }
+
+  retrieveInfo(id: number) {
+    return this.http.get<ScraperInfo>(`${API_URL}/info/${id}`);
+  }
+
   getScrape(scrapeInfo) {
       return this.http.post(`${API_URL}/getwebscrape`, scrapeInfo);
+  }
+
+  updateInfo(id: number, scraperInfo: ScraperInfo) {
+    return this.http.put<ScraperInfo>(`${API_URL}/updateinfo/${id}`, scraperInfo)
+  }
+
+  deleteInfo(id: any) {
+    return this.http.delete(`${API_URL}/deleteinfo/${id}`)
   }
 
   getSourceHtml() {

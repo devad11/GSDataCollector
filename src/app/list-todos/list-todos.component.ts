@@ -41,14 +41,14 @@ export class ListTodosComponent implements OnInit {
     this.refreshTodo();
   }
 
-  refreshTodos() {
-    this.todoService.retrieveAllTodos(this.username).subscribe(
-      response => {
-        console.log(response);
-        this.todos = response;
-      }
-    );
-  }
+  // refreshTodos() {
+  //   this.todoService.retrieveAllTodos(this.username).subscribe(
+  //     response => {
+  //       console.log(response);
+  //       this.todos = response;
+  //     }
+  //   );
+  // }
   refreshTodo() {
   this.sourceService.retrieveAllScraperInfo(this.username).subscribe(
     response => {
@@ -58,17 +58,26 @@ export class ListTodosComponent implements OnInit {
   );
 }
 
-  deleteTodo(id) {
-    this.todoService.deleteTodo(this.username, id).subscribe(
+  deleteInfo(id) {
+    this.sourceService.deleteInfo(id).subscribe(
       response => {
         console.log(response);
-        this.message = `Delete of Todo ${id} Successful`
-        this.refreshTodos();
+        this.message = `Delete of Collector ${id} Successful`
+        this.refreshTodo();
       }
     )
   }
+  // deleteTodo(id) {
+  //   this.todoService.deleteTodo(this.username, id).subscribe(
+  //     response => {
+  //       console.log(response);
+  //       this.message = `Delete of Todo ${id} Successful`
+  //       this.refreshTodos();
+  //     }
+  //   )
+  // }
 
-  updateTodo(id) {
+  updateInfo(id) {
     this.router.navigate(['todo', id])
   }
 

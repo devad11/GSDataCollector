@@ -1,5 +1,4 @@
-<br><br><br><br><br><br><br><br><br><br>
-
+<br><br><br><br><br><br>
 <div class="center">
   <h1>Request Access!</h1>
 
@@ -34,8 +33,16 @@
       <button type="submit" class="btn btn-success">Save</button>
     </form>
 
+    <div class="alert alert-block" *ngIf="this.message">
+      <button type="button" class="close" data-dismiss="alert alert-block">&times;</button>
+      <h4>Thank you for your request!</h4>
+      {{this.message}}
+      <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Show collections</button>
+    </div>
+
+
     <div>
-      <p>{{this.message}}</p>
+      <p></p>
     </div>
     
   </div>

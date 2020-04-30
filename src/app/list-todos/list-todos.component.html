@@ -30,8 +30,8 @@
         <td>{{scraperInfo.column_names}}</td>
         <td>{{scraperInfo.created | date}}</td>
         <td>{{scraperInfo.is_active}}</td>
-        <td><button (click)="updateTodo(scraperInfo.id)" class="btn btn-success">Update</button></td>
-        <td><button (click)="deleteTodo(scraperInfo.id)" class="btn btn-warning">Delete</button></td>
+        <td><button (click)="updateInfo(scraperInfo.id)" class="btn btn-success">Update</button></td>
+        <td><button (click)="deleteInfo(scraperInfo.id)" class="btn btn-warning">Delete</button></td>
       </tr>
     </tbody>
   </table>

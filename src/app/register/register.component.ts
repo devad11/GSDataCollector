@@ -22,7 +22,7 @@ export class RegisterInfo {
 export class RegisterComponent implements OnInit {
 
   registerInfo: RegisterInfo;
-  message = "Your request been sent. You will receive confirmation from admin when your request been approved";
+  message: string;
 
   constructor(    
     private apiDataService: ApiDataService,
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       data => {
         console.log(data)
       });
-      
+      this.message = "Your request been sent. You will receive confirmation from admin when your request been approved";
     }
 
 }
