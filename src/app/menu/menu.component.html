@@ -7,7 +7,9 @@
         <!-- <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/todos" class="nav-link">Todos</a></li> -->
         <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/sourcehtml" class="nav-link">Source HTML</a></li>
         <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/source_api" class="nav-link">Source API</a></li>
+        <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/file" class="nav-link">Source from File</a></li>
         <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/show-table" class="nav-link">Show Tabels</a></li>
+        <li><a *ngIf="!hardcodedAuthService.isUserAdmin()" routerLink="/request" class="nav-link">Requests</a></li>
     </ul>
 
     <ul class="navbar-nav navbar-collapse justify-content-end">

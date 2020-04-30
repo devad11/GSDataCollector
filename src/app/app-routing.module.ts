@@ -11,6 +11,8 @@ import { SourcehtmlComponent } from './sourcehtml/sourcehtml.component';
 import { SourceApiComponent } from './source-api/source-api.component';
 import { ShowTableComponent } from './show-table/show-table.component';
 import { RegisterComponent } from './register/register.component';
+import { AcceptRequestComponent } from './accept-request/accept-request.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 // welcome
 const routes: Routes = [
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path:'source_api', component: SourceApiComponent, canActivate: [RouteGuardService]},
   { path:'show-table', component: ShowTableComponent, canActivate: [RouteGuardService]},
   { path:'register', component: RegisterComponent},
+  { path:'request', component: AcceptRequestComponent, canActivate: [RouteGuardService]},
+  { path:'file', component: FileUploadComponent, canActivate: [RouteGuardService]},
 
   { path:'**', component: ErrorComponent}
 ];

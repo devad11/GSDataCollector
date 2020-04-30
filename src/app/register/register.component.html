@@ -12,6 +12,16 @@
       </div>
 
       <div class="form-group">
+        <label>Username</label>
+        <input type="text" [ngModel]="registerInfo?.username" (ngModelChange)="registerInfo.username = $event" class="form-control" name="username">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="text" [ngModel]="registerInfo?.password" (ngModelChange)="registerInfo.password = $event" class="form-control" name="password">
+      </div>
+
+      <div class="form-group">
         <label>Reason for request</label>
         <input type="text" [ngModel]="registerInfo?.reason" (ngModelChange)="registerInfo.reason = $event" class="form-control" name="reason">
       </div>

@@ -5,8 +5,11 @@ import { ApiDataService } from '../service/data/api-data.service';
 export class RegisterInfo {
   constructor(
     public name: string,
+    public username: string,
+    public password: string,
     public reason: string, 
     public email: string,
+    public accepted: boolean,
   )
   {}
 }
@@ -28,7 +31,7 @@ export class RegisterComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.registerInfo = new RegisterInfo("","","");
+    this.registerInfo = new RegisterInfo("","","","","", false);
   }
 
   sendRegisterInfo() {

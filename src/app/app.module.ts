@@ -20,6 +20,8 @@ import { KeysPipe } from './pipes/keys.pipe';
 import { ShowTableComponent } from './show-table/show-table.component';
 import { SafePipe } from './pipes/safe.pipe';
 import { RegisterComponent } from './register/register.component';
+import { AcceptRequestComponent } from './accept-request/accept-request.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { RegisterComponent } from './register/register.component';
     KeysPipe,
     ShowTableComponent,
     SafePipe,
-    RegisterComponent 
+    RegisterComponent,
+    AcceptRequestComponent,
+    FileUploadComponent 
   ],
   imports: [
     BrowserModule,
