@@ -10,6 +10,7 @@ import { TodoComponent } from './todo/todo.component';
 import { SourcehtmlComponent } from './sourcehtml/sourcehtml.component';
 import { SourceApiComponent } from './source-api/source-api.component';
 import { ShowTableComponent } from './show-table/show-table.component';
+import { RegisterComponent } from './register/register.component';
 
 // welcome
 const routes: Routes = [
@@ -20,8 +21,9 @@ const routes: Routes = [
   { path:'todo/:id', component: TodoComponent, canActivate: [RouteGuardService]},
   { path:'todos', component: ListTodosComponent, canActivate: [RouteGuardService]},
   { path:'sourcehtml', component: SourcehtmlComponent, canActivate: [RouteGuardService]},
-  { path:'source_api', component: SourceApiComponent},
-  { path:'show-table', component: ShowTableComponent},
+  { path:'source_api', component: SourceApiComponent, canActivate: [RouteGuardService]},
+  { path:'show-table', component: ShowTableComponent, canActivate: [RouteGuardService]},
+  { path:'register', component: RegisterComponent},
 
   { path:'**', component: ErrorComponent}
 ];

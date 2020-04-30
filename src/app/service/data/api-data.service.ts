@@ -15,8 +15,9 @@ export class ApiDataService {
       return this.http.get<ApiDataService>(apiAddress);
   }
 
-  // apiDataToBackend(apiData) {
-  //   return this.http.post<string>(`${API_URL}/apidata`, apiData)
+  sendRegister(registerInfo) {
+    return this.http.post<string>(`${API_URL}/register`, registerInfo)
+  }
 
     apiDataToBackend(apiData) {
     return this.http.post<string>(`${API_URL}/apidata`, apiData)
