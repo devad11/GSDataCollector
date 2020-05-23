@@ -29,7 +29,7 @@ export class TodoComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.username = this.basicAuthenticationService.getAuthenticatedUser();
     this.todo = new Todo(this.id, "", false, new Date)
-    this.scraperInfo = new ScraperInfo('name2', 2, 1, 'Adam', 'source', 'selectors', 'columns', null, true, false);
+    this.scraperInfo = new ScraperInfo('name2', 2, 1, this.basicAuthenticationService.getAuthenticatedUser(), 'source', 'selectors', 'columns', null, true, false);
     this.sourceHtmlService.retrieveInfo(this.id).subscribe(
       data => this.scraperInfo = data
     )

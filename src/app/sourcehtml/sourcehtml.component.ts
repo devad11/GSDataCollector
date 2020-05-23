@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SourcehtmlService } from '../service/data/sourcehtml.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
+import { BasicAuthenticationService } from '../service/basic-authentication-service';
 
 
 export class ScraperInfo {
@@ -40,12 +41,13 @@ export class SourcehtmlComponent implements OnInit{
     private sourceHtmlService: SourcehtmlService,
     private route: ActivatedRoute,
     private router: Router,
+    private basicAuthenticationService: BasicAuthenticationService,
     public sanitizer: DomSanitizer
   ) { 
   }
 
   ngOnInit() {
-    this.scraperInfo = new ScraperInfo('name2', 2, 1, 'Adam', 'source', 'selectors', 'columns', null, true, false);
+    this.scraperInfo = new ScraperInfo('name2', 2, 1, this.basicAuthenticationService.getAuthenticatedUser(), 'source', 'selectors', 'columns', null, true, false);
     this.website = "http://www.mycit.ie/";
   }
 
@@ -73,7 +75,9 @@ export class SourcehtmlComponent implements OnInit{
     data => {
       console.log(data)
       this.done()
-    });
+    },
+    error => this.done()
+    );
   }
 
 

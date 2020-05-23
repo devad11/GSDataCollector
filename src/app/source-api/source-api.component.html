@@ -1,35 +1,41 @@
-
+  <h1>New API Collector</h1>
   <br>
   
   <div class="container">
+    <div class="alert alert-warning" *ngIf="scraperInfoForm.dirty && scraperInfoForm.invalid">Enter valid values</div>
+    <div class="alert alert-warning" *ngIf="scraperInfoForm.dirty && (name.invalid || source.invalid)">Enter at least 5 characters</div>
+    <div class="alert alert-warning" *ngIf="scraperInfoForm.dirty && frequency.invalid">Frequency must be a whole number 1-7</div>
 
-    <form (ngSubmit)="sendScraperInfo()"  #scraperInfoForm="ngForm">
-      <div class="form-group">
+
+    <form (ngSubmit)="!scraperInfoForm.invalid && sendScraperInfo()"  #scraperInfoForm="ngForm">
+      <fieldset class="form-group">
         <label>Collection name</label>
-        <input [ngModel]="scraperInfo?.name" (ngModelChange)="scraperInfo.name = $event" class="form-control" name="name">
-      </div>
+        <input type="text" #name="ngModel" [ngModel]="scraperInfo?.name" (ngModelChange)="scraperInfo.name = $event" class="form-control" name="name" minlength="5" required="required">
+      </fieldset>
 
-      <div class="form-group">
+      <fieldset class="form-group">
         <label>Source</label>
-        <input type="text" [ngModel]="scraperInfo?.source" (ngModelChange)="scraperInfo.source = $event" class="form-control" name="source">
-      </div>
+        <input type="text" #source="ngModel" [ngModel]="scraperInfo?.source" (ngModelChange)="scraperInfo.source = $event" class="form-control" name="source" minlength="5" required="required">
+      </fieldset>
 
-      <div class="form-group">
-        <label>Selectors</label>
-        <input type="number"[ngModel]="scraperInfo?.frequency" (ngModelChange)="scraperInfo.frequency = $event" class="form-control" name="frequency">
-      </div>
+      <fieldset class="form-group">
+        <label>Frequency</label>
+        <input type="number" #frequency="ngModel" [ngModel]="scraperInfo?.frequency" (ngModelChange)="scraperInfo.frequency = $event" class="form-control" name="frequency" min="1" max="7" required="required">
+      </fieldset>
 
       <button type="submit" class="btn btn-success">Save</button>
     </form>
+    <br><br><br>
 
     
       <label>API Test</label>
       <input type="text" id="rec4" #input class="form-control" (change)="store(input.value); input.value=''"> 
-    </div>
+    
 
     <br>
 
     <button (click)="getData()" class="btn btn-success">Get Data from API</button><br>
+  </div>
 
     <div class="container" *ngIf="apiData">
       <h2>The data: </h2>

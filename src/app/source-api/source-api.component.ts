@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiDataService } from '../service/data/api-data.service';
 import { ScraperInfo } from '../sourcehtml/sourcehtml.component';
 import { SourcehtmlService } from '../service/data/sourcehtml.service';
+import { BasicAuthenticationService } from '../service/basic-authentication-service';
 
 @Component({
   selector: 'app-source-api',
@@ -21,11 +22,12 @@ export class SourceApiComponent implements OnInit {
   constructor(private route: ActivatedRoute,
   private service: ApiDataService, 
   private router: Router,
+  private basicAuthenticationService: BasicAuthenticationService,
   private sourceHtmlService: SourcehtmlService
   ) { }
 
   ngOnInit() {
-    this.scraperInfo = new ScraperInfo('name2', 1, 1, 'Adam', 'source', null, null, null, true, false);
+    this.scraperInfo = new ScraperInfo('name2', 1, 1, this.basicAuthenticationService.getAuthenticatedUser(), 'source', null, null, null, true, false);
   }
 
   getData() {
@@ -56,7 +58,8 @@ export class SourceApiComponent implements OnInit {
       data => {
         console.log(data)
         this.done()
-      });
+      },
+      error => this.done());
       
     } 
 

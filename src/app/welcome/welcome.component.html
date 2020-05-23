@@ -1,22 +1,31 @@
-<br><br><br><br><br><br><br><br><br><br>
+<br>
 
 <div class="center">
-    <h1>Welcome!</h1>
 
     <div class="container">
-        Welcome {{name}}.
-
-        Welcome to the GS Data Collector! <a routerLink="/todos">here</a><br>
-
-        Click here to show all data collection from this user ->
-
-        <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Show collections</button><br>
-
+        <h1>Welcome {{name}}!</h1>
+        <h2> You can see all your GS Data Collectors <a routerLink="/todos">here!</a><br></h2>
+        <p>If you need help please visit our Jira site and search for GS Data Collector.</p>
+        <h5>Quick info</h5>
+        <p>This application was created to save data from specific location in an automated fashion. <br>
+        <u>Current methods:</u><br>
+        REST API Collection<br>
+        Web Scraping Collection<br>
+        <u>Coming soon:</u><br>
+        File Upload
+        </p>
+        <h5>Quick Guide</h5>
+        <p><b>REST API Collection</b> <br>
+        <u>Source:</u> This is the full link for the requierd end node (request from source site)<br>
+    <u>Frequency:</u> 1 - 30 sec,<br> 2 - 15 mins,<br> 3 - 1 hr,<br> 4 - 6 hrs,<br> 5 - everyday at 7:00 AM,<br>
+         6 - every week at Monday 7:00 AM,<br>  7 - every first day of a month at 7:00 AM <br>
+         <b>Web Scraping Collection</b><br>
+        <u>Source:</u> Full web link of the location<br>
+    <u>Selectors:</u> Selectors can be found using "inspect" operation. Separate with semicolons.  For more info visit Jira<br>
+<u>Frequency:</u> 1 - 30 sec,<br> 2 - 15 mins,<br> 3 - 1 hr,<br> 4 - 6 hrs,<br> 5 - everyday at 7:00 AM,<br>
+         6 - every week at Monday 7:00 AM,<br>  7 - every first day of a month at 7:00 AM <br>
+        <u>Column Names:</u> Your choise of name for each of the selectors included above. Separate with semicolons.
+        </p>
     </div>
 
-    <div class="container" *ngIf="welcomeMessageFromService">
-        <h2>Your collections are the following:</h2>
-        {{welcomeMessageFromService}}
-
-    </div>
 </div>
