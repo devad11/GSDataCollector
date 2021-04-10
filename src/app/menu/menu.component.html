@@ -4,7 +4,6 @@
 
     <ul class="navbar-nav">
         <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" [routerLink]="['/welcome/', username]" class="nav-link">Home</a></li>
-        <!-- <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/todos" class="nav-link">Todos</a></li> -->
         <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/sourcehtml" class="nav-link">Source HTML</a></li>
         <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/source_api" class="nav-link">Source API</a></li>
         <li><a *ngIf="hardcodedAuthService.isUserLoggedIn()" routerLink="/file" class="nav-link">Source from File</a></li>

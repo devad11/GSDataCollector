@@ -22,13 +22,6 @@ export class WelcomeComponent implements OnInit {
     this.name = this.route.snapshot.params['name']
   }
 
-  // getWelcomeMessage() {
-  //   this.service.executeHelloWorldBeanService().subscribe(
-  //     response => this.handleSuccessfulResponse(response),
-  //     error => this.handleErrorResponse(error)
-  //   );
-  // }
-
   getWelcomeMessageWithParameter() {
     this.service.executeHelloWorldServiceWithPathVariable(this.name).subscribe(
       response => this.handleSuccessfulResponse(response),

@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    // console.log(this.username);
     if (this.hardcodedAuthService.authenticate(this.username, this.password)) {
       this.router.navigate(['welcome', this.username])
       this.invalidLogin = false
@@ -34,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   handleJWTAuthLogin() {
-    // console.log(this.username);
     this.basicAuthenticationService.executeJWTAuthenticationService(this.username, this.password)
       .subscribe(
         data => {

@@ -95,11 +95,5 @@ export class SourcehtmlComponent implements OnInit{
 
  store(newValue){
    this.website = newValue;
-
-
-  //  this.sourceHtmlService.sendSource(this.data).subscribe(
-  //   data => {
-  //     console.log(data)
-  //   })
  }
 }

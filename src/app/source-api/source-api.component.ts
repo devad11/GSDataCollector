@@ -71,13 +71,4 @@ export class SourceApiComponent implements OnInit {
       this.apiAddress = newValue;
     }
 
-  // handleSuccessfulResponse(response: any) {
-  //   this.apiData = response;
-  //   this.service.apiDataToBackend(this.apiData)
-  //   .subscribe(
-  //     response => this.msg = response,
-  //   );
-  //   console.log(this.msg)
-  // }
-
 }
